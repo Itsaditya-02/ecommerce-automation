@@ -1,7 +1,10 @@
 package com.ecommerce.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 import com.ecommerce.utils.WaitUtil;
 
@@ -15,6 +18,8 @@ public class CartPage {
     By removeBackpackButton = By.id("remove-sauce-labs-backpack");
     By checkoutButton = By.id("checkout");
     By cartItems = By.className("cart_item");
+    By continueShoppingButton = By.id("continue-shopping");
+    By productPrice = By.className("inventory_item_price");
 
     // Constructor
     public CartPage(WebDriver driver) {
@@ -46,5 +51,19 @@ public class CartPage {
         waitUtil
                 .waitForElementToBeClickable(checkoutButton)
                 .click();
+    }
+
+    public String getProductPrice() {
+        return new WebDriverWait(driver, Duration.ofSeconds(10)).until(webDriver -> {
+            try {
+                return webDriver.findElement(productPrice).getText();
+            } catch (StaleElementReferenceException e) {
+                return null;
+            }
+        });
+    }
+
+    public void continueShopping() {
+        waitUtil.waitForElementToBeClickable(continueShoppingButton).click();
     }
 }

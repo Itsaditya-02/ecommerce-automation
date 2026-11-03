@@ -71,4 +71,5 @@ public class LoginPage {
                 .waitForElementToBeVisible(loginButton)
                 .isDisplayed();
     }
+
 }

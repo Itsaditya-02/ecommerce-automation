@@ -14,6 +14,7 @@
             <class name="com.ecommerce.tests.CheckoutTest"/>
             <class name="com.ecommerce.tests.ProductTest"/>
             <class name="com.ecommerce.tests.LogoutTest"/>
+            <class name="com.ecommerce.tests.AdditionalCoverageTest"/>
 
         </classes>
 

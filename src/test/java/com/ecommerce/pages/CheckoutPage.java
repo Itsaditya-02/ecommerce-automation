@@ -18,6 +18,7 @@ public class CheckoutPage {
     By pageTitle = By.className("title");
     By finishButton = By.id("finish");
     By confirmationMessage = By.className("complete-header");
+    By errorMessage = By.cssSelector("[data-test='error']");
 
     // Constructor
     public CheckoutPage(WebDriver driver) {
@@ -84,6 +85,10 @@ public class CheckoutPage {
         return waitUtil
                 .waitForElementToBeVisible(confirmationMessage)
                 .getText();
+    }
+
+    public String getErrorMessage() {
+        return waitUtil.waitForElementToBeVisible(errorMessage).getText();
     }
 
     // Complete customer information
